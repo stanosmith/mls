@@ -1,6 +1,4 @@
-if (!process.env.CTF_SPACE_ID) {
-  require('dotenv').config()
-}
+require('dotenv').config()
 const client = require('./plugins/contentful')
 
 module.exports = {
