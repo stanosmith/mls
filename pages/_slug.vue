@@ -7,11 +7,16 @@
             <nuxt-link to="/">Back to Blog home</nuxt-link>
           </p>
           <h1 class="title is-2">
-            {{ post.fields.title }}
+            {{ stadium.fields.name }}
           </h1>
-
-          <hr>
-          <div class="content" v-html="$md.render(post.fields.content)"></div>
+          <table class="table">
+            <tbody>
+            <tr v-for="(field, key) in stadium.fields" :key="key">
+              <td><strong>{{ key }}</strong></td>
+              <td>{{ field }}</td>
+            </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
@@ -23,21 +28,21 @@ import client from '~/plugins/contentful';
 
 export default {
   asyncData({ params, error, payload }) {
-    if (payload) return { post: payload };
+    if (payload) return { stadium: payload };
 
     return client
       .getEntries({
-        content_type: 'post',
+        content_type: 'stadium',
         'fields.slug': params.slug,
       })
       .then(entries => {
-        return { post: entries.items[0] };
+        return { stadium: entries.items[0] };
       })
       .catch(e => console.log(e));
   },
   head() {
     return {
-      title: this.post.fields.title,
+      title: this.stadium.fields.name,
     };
   },
 };

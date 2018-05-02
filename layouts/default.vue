@@ -4,11 +4,8 @@
       <div class="hero-body">
         <div class="container">
           <h1 class="title">
-            <nuxt-link to="/">Nuxt Blog</nuxt-link>
+            <nuxt-link to="/">MLS Stadiums</nuxt-link>
           </h1>
-          <h2 class="subtitle">
-            Your all round tech blog
-          </h2>
         </div>
       </div>
     </section>
